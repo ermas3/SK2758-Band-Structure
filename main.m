@@ -10,7 +10,7 @@ gamma_3 = 2.782;
 m_e = 0.0665;
 E_p = 28.8;
 E_g = 1.424;
-E_v = 0; % FIXA TILL DETHÄR?!?!?!
+E_v = 0; 
 delta = 0.341;
 P = sqrt(h_bar^2*E_p / (2*m_0));
 
