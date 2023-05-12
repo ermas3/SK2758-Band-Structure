@@ -1,4 +1,4 @@
-function bands = band_structure(k_x_min, k_x_max, n_points, so, strain)
+function bands = band_structure(k_x_min, k_x_max, n_points, so)
     % Define physical constants
     m_0 = 5.6667e-12;
     h_bar = 6.582e-16;
@@ -48,12 +48,9 @@ function bands = band_structure(k_x_min, k_x_max, n_points, so, strain)
             0, 0, 1j, 0;
             0, -1j, 0, 0;
             0, 0, 0, 0];
-        
-        G_strain = [-6.0 * 0.05, 0, 0, 0;
-                    0, -0.7*0.05, 0, 0;
-                    0, 0, 4.0*0.05, 0;
-                    0, 0, 0, 4.0*0.05];
 
+
+        
         if so 
             G = G_1 + G_2 + G_so;
             GAMMA = -delta/3 * [0, 0, 0, 0;
@@ -62,11 +59,7 @@ function bands = band_structure(k_x_min, k_x_max, n_points, so, strain)
                                 0, 1, -1j, 0];
         else
             G = G_1 + G_2;
-            GAMMA = zeros(4);
-        end
-
-        if strain
-            G = G + G_strain;
+            GAMMA = zeros();
         end
 
         H = [G, GAMMA;
